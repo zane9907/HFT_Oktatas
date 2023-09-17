@@ -1,7 +1,12 @@
 # HFT_Oktatas
 
-Itt lesznek megtalálhatóak az órai feladatok leírásai illetve a hozzájuk tartozó megoldások.
+Itt lesznek megtalálhatóak az órai feladatok leírásai illetve a hozzájuk tartozó megoldások.  
 Minden projekt .NET 6.0 verzióval készült.
+
+# Elérhetőség
+
+Teams: Antalóczy Botond  
+Email: antaloczy.botond@nik.uni-obuda.hu
 
 # Visual Studio új projekt lérehozása:
   1.  Create a new project
