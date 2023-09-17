@@ -1,14 +1,15 @@
 ## Első órai feladatról készült videó elérhető itt: https://youtu.be/_1qk7OpuoqY
 
+# Elérhetőség
+
+Teams: Antalóczy Botond  
+Email: antaloczy.botond@nik.uni-obuda.hu
+
 # HFT_Oktatas
 
 Itt lesznek megtalálhatóak az órai feladatok leírásai illetve a hozzájuk tartozó megoldások.  
 Minden projekt .NET 6.0 verzióval készült.
 
-# Elérhetőség
-
-Teams: Antalóczy Botond  
-Email: antaloczy.botond@nik.uni-obuda.hu
 
 # Visual Studio új projekt lérehozása:
   1.  Create a new project
