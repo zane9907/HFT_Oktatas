@@ -1,3 +1,5 @@
+## Első órai feladatról készült videó elérhető itt: https://youtu.be/_1qk7OpuoqY
+
 # HFT_Oktatas
 
 Itt lesznek megtalálhatóak az órai feladatok leírásai illetve a hozzájuk tartozó megoldások.  
