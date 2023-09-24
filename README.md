@@ -1,4 +1,7 @@
 ## Első órai feladatról készült videó elérhető itt: https://youtu.be/_1qk7OpuoqY
+## Ha ismételni szeretnétek SZTF 2-ből akkor itt vannak arról az órámról is a videók: https://www.youtube.com/playlist?list=PL3oXIqVuVb1zqLsutpsMfeI7YgHs1ZJlq
+## Valamint SZTF 1 ismétlésre https://nikprog.hu/ oldalt ajánlom. (Ugyanaz ahol a HFT elmélet és gyak videók is vannak)
+
 
 # Elérhetőség
 
