@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ora_01", "Ora_01\Ora_01.csproj", "{803BEC9F-039A-4121-864D-80D13AEDAB83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ora_02", "Ora_02\Ora_02.csproj", "{CE5C87E8-501C-4697-8CD5-00BD1949EDCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ora_02", "Ora_02\Ora_02.csproj", "{CE5C87E8-501C-4697-8CD5-00BD1949EDCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ora_03", "Ora_03\Ora_03.csproj", "{2ABD5BD1-334F-450E-8F32-25586E35E1DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CE5C87E8-501C-4697-8CD5-00BD1949EDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE5C87E8-501C-4697-8CD5-00BD1949EDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE5C87E8-501C-4697-8CD5-00BD1949EDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABD5BD1-334F-450E-8F32-25586E35E1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABD5BD1-334F-450E-8F32-25586E35E1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABD5BD1-334F-450E-8F32-25586E35E1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABD5BD1-334F-450E-8F32-25586E35E1DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
