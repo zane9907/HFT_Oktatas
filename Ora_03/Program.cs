@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace XML_JSON_LINQ_02
 {
-    class CD
+    class Cd
     {
         public string Title { get; set; }
         public string Artist { get; set; }
@@ -16,210 +16,79 @@ namespace XML_JSON_LINQ_02
         public double Price { get; set; }
         public int Year { get; set; }
 
-        public CD(string title, string artist, string country, string company, double price, int year)
+        public Cd()
         {
-            Title = title;
-            Artist = artist;
-            Country = country;
-            Company = company;
-            Price = price;
-            Year = year;
-        }
 
-        public CD()
-        {
         }
-
-        public override string ToString()
-        {
-            return $"\"{Title}\" - {Artist} [{Year}] {Price}$";
-        }
-
     }
 
     class Country
     {
         public string Name { get; set; }
-        public int CDCount { get; set; }
+        public int CdCount { get; set; }
         public double AvgPrice { get; set; }
         public List<string> Artists { get; set; }
 
-        public Country(string name, int cDCount, double avgPrice, List<string> artists)
-        {
-            Name = name;
-            CDCount = cDCount;
-            AvgPrice = avgPrice;
-            Artists = artists;
-        }
-
         public Country()
         {
+            Artists = new List<string>();
         }
     }
 
-
     class Program
     {
-        static void Main(string[] args)
+        static List<Cd> DeserializeJSON(string path)
         {
-
-
-            //Deserialize
-            //var catalog = DeserializeXML("cd_catalog.xml");
-            var catalog = DeserializeJSON("cd_catalog.json");
-
-
-
-            //Lekérdezések
-
-            //1. Gyűjtsük ki a CD-k címeit egy külön listába
-            var titleMethod = catalog.Select(x => x.Title).ToList();
-
-
-            var titleQuery = (from x in catalog
-                              select x.Title).ToList();
-
-
-
-            //2. Gyűjtsük ki a CD-k címeit és évszámait, évszám szerint növekvő sorrendben
-            var titleYearIncMethod = catalog.Select(x => new
-            {
-                Title = x.Title,
-                Year = x.Year
-            }).OrderBy(y => y.Year).ToList();
-
-
-            var titleYearIncQuery = (from x in catalog
-                                     orderby x.Year
-                                     select new
-                                     {
-                                         Title = x.Title,
-                                         Year = x.Year
-                                     }).ToList();
-
-
-
-            //3. Gyűjtsük ki csak a 10$-nál nagyobb árú CD-ket
-            var moreThan10Method = catalog.Where(x => x.Price >= 10).ToList();
-
-            var moreThan10Query = (from x in catalog
-                                   where x.Price >= 10
-                                   select x).ToList();
-
-
-
-            //4. Gyűjtsük ki azokat az elemeket, amelyek évszáma legalább 1995 és az EU-ban készültek
-            //   Írassuk ki a CD-k nevét, szerzőjét és árát
-            var eu1995Method = catalog.Where(x => x.Year >= 1995 && x.Country == "EU").Select(x => new
-            {
-                TITLE = x.Title,
-                ARTIST = x.Artist,
-                PRICE = x.Price
-            }).ToList();
-
-            var eu1995Query = (from x in catalog
-                               where x.Year >= 1995 && x.Country == "EU"
-                               select new
-                               {
-                                   TITLE = x.Title,
-                                   ARTIST = x.Artist,
-                                   PRICE = x.Price
-                               }).ToList();
-
-
-
-            //5. Számoljuk meg, hogy hány olyan CD van ami az USA-ban készült
-            var madeInUSAMethod = catalog.Count(x => x.Country == "USA");
-
-            var madeInUSAQuery = (from x in catalog
-                                  where x.Country == "USA"
-                                  select x).Count();
-
-
-
-            //6. Csoportosítsuk az elemeket ország szerint, valamint számoljuk meg hogy országonként hány CD-t adtak ki
-            var groupCountryMethod = catalog.GroupBy(x => x.Country).Select(y => new
-            {
-                COUNTRY = y.Key,
-                COUNT =  y.Count()
-            }).ToList();
-            
-            var groupCountryQuery = (from x in catalog
-                                     group x by x.Country into g
-                                     select new
-                                     {
-                                         COUNTRY = g.Key,
-                                         COUNT = g.Count()
-                                     }).ToList();
-
-
-
-            //7. Csoportosítsuk a CD-ket évszám szerint és írjuk ki mellé az évenkénti átlagárat kettő tizedesjegyig
-            var groupYearMethod = catalog.GroupBy(x => x.Year).Select(y => new
-            {
-                YEAR = y.Key,
-                AVG = Math.Round(y.Average(x => x.Price), 2)
-            }).ToList();
-
-
-            var groupYearQuery = (from x in catalog
-                                  group x by x.Year into g
-                                  select new
-                                  {
-                                      YEAR = g.Key,
-                                      AVG = Math.Round(g.Average(x => x.Price), 2)
-                                  }).ToList();
-
-
-            //8. Csoportosítsuk az elemeket ország szerint, majd hozzunk létre egy országokat tartalmazó listát.
-            //   Adjuk meg a megfelelő adatokat.
-            var countriesMethod = catalog.GroupBy(x => x.Country).Select(y => new Country()
-            {
-                Name = y.Key,
-                CDCount = y.Count(),
-                AvgPrice = Math.Round(y.Average(x => x.Price), 2),
-                Artists = y.Select(a => a.Artist).ToList()
-            }).ToList();
-
-            var countriesQuery = (from x in catalog
-                                  group x by x.Country into g
-                                  select new Country()
-                                  {
-                                      Name = g.Key,
-                                      CDCount = g.Count(),
-                                      AvgPrice = Math.Round(g.Average(x => x.Price), 2),
-                                      Artists = g.Select(g => g.Artist).ToList()
-                                  }).ToList();
-
-
-            //Serialize (XML, JSON)
-            SerializeXML(countriesMethod);
-            SerializeJson(countriesQuery);
-
-
-            ;
+            string json = File.ReadAllText(path);
+            return JsonConvert.DeserializeObject<List<Cd>>(json);
         }
 
-
-        static void SerializeJson(List<Country> countries)
+        static List<Cd> DeserializeXML(string path)
         {
-            string json = JsonConvert.SerializeObject(countries, Formatting.Indented);
+            List<Cd> result = new List<Cd>();
+
+            XDocument xdoc = XDocument.Load(path);
+
+            foreach (var item in xdoc.Root.Elements())
+            {
+                result.Add(new Cd()
+                {
+                    Title = item.Element("TITLE").Value,
+                    Artist = item.Element("ARTIST").Value,
+                    Country = item.Element("COUNTRY").Value,
+                    Company = item.Element("COMPANY").Value,
+                    Price = double.Parse(item.Element("PRICE").Value),
+                    Year = int.Parse(item.Element("YEAR").Value)
+                });
+            }
+
+            return result;
+        }
+
+        
+        static void SerializeJson(List<Country> list)
+        {
+            string json = JsonConvert.SerializeObject(list,Formatting.Indented);
             File.WriteAllText("output.json", json);
         }
 
-        static void SerializeXML(List<Country> countries)
+
+        static void SerializeXML(List<Country> list)
         {
             XDocument xdoc = new XDocument();
 
             xdoc.Add(new XElement("countries"));
-            foreach (var country in countries)
+
+            foreach (var country in list)
             {
                 XElement xcountry = new XElement("country");
                 xcountry.Add(new XElement("name", country.Name));
-                xcountry.Add(new XElement("cdcount", country.CDCount));
-                xcountry.Add(new XElement("avgprice", country.AvgPrice));
+                xcountry.Add(new XElement("cdCount", country.CdCount));
+                xcountry.Add(new XElement("avgPrice", country.AvgPrice));
 
-                XElement xartists = new XElement("artists");
+                XElement xartists = new XElement("artists",new XAttribute("listCount", country.Artists.Count));
+                
+
                 foreach (var artist in country.Artists)
                 {
                     xartists.Add(new XElement("artist", artist));
@@ -233,33 +102,122 @@ namespace XML_JSON_LINQ_02
         }
 
 
-
-        static List<CD> DeserializeJSON(string file)
+        static void Main(string[] args)
         {
-            string json = File.ReadAllText(file);
-            return JsonConvert.DeserializeObject<List<CD>>(json);
-        }
+            List<Cd> list = DeserializeJSON("cd_catalog.json");
+            //List<Cd> xmlList = DeserializeXML("cd_catalog.xml");
 
-        static List<CD> DeserializeXML(string file)
-        {
-            List<CD> tmp = new List<CD>();
+            var t1 = list.Select(x => x.Title).ToList();
+            var t1q = (from x in list
+                      select x.Title).ToList();
 
-            XDocument xdoc = XDocument.Load(file);
 
-            foreach (var item in xdoc.Root.Elements())
+            var t2 = list.Select(x => new
             {
-                tmp.Add(new CD()
-                {
-                    Title = item.Element("TITLE").Value,
-                    Artist = item.Element("ARTIST").Value,
-                    Country = item.Element("COUNTRY").Value,
-                    Company = item.Element("COMPANY").Value,
-                    Price = double.Parse(item.Element("PRICE").Value),
-                    Year = int.Parse(item.Element("YEAR").Value)
-                });
-            }
+                TTILE = x.Title,
+                YEAR = x.Year
+            }).OrderBy(x => x.YEAR).ToList();
 
-            return tmp;
+            var t2q = (from x in list
+                       orderby x.Year
+                       select new
+                       {
+                           TTILE = x.Title,
+                           YEAR = x.Year
+                       }).ToList();
+
+
+
+            var t3 = list.Where(x => x.Price > 10).ToList();
+
+            var t3q = (from x in list
+                       where x.Price > 10
+                       select x).ToList();
+
+
+            var t4 = list.Where(x => x.Year > 1995 && x.Country == "EU").Select(x => new
+            {
+                TITLE = x.Title,
+                ARTIST = x.Artist,
+                PRICE = x.Price
+            }).ToList();
+
+
+            var t4q = (from x in list
+                       where x.Year > 1995 && x.Country == "EU"
+                       select new
+                       {
+                           TITLE = x.Title,
+                           ARTIST = x.Artist,
+                           PRICE = x.Price
+                       }).ToList();
+
+            
+
+            var t5 = list.Count(x => x.Country == "USA");
+
+            var t5q = (from x in list
+                       where x.Country == "USA"
+                       select x).Count();
+
+
+            var t6 = list.GroupBy(x => x.Country).Select(x => new
+            {
+                COUNTRYNAME = x.Key,
+                COUNT = x.Count()
+            });
+
+
+            var t6q = (from x in list
+                       group x by x.Country into g
+                       select new
+                       {
+                           COUNTRYNAME = g.Key,
+                           COUNT = g.Count()
+                       }).ToList();
+
+
+            var t7 = list.GroupBy(x => x.Year).Select(x => new
+            {
+                YEAR = x.Key,
+                AVG = Math.Round(x.Average(y => y.Price), 2)
+            }).ToList();
+
+
+            var t7q = (from x in list
+                       group x by x.Year into g
+                       select new
+                       {
+                           YEAR = g.Key,
+                           AVG = Math.Round(g.Average(y => y.Price), 2)
+                       }).ToList();
+
+
+            var t8 = list.GroupBy(x => x.Country).Select(x => new Country()
+            {
+                Name = x.Key,
+                CdCount = x.Count(),
+                AvgPrice = Math.Round(x.Average(y => y.Price), 2),
+                Artists = x.Select(y=>y.Artist).ToList()
+            }).ToList();
+
+
+            var t8q = (from x in list
+                       group x by x.Country into g
+                       select new Country()
+                       {
+                           Name = g.Key,
+                           CdCount = g.Count(),
+                           AvgPrice = Math.Round(g.Average(y => y.Price), 2),
+                           Artists = g.Select(y => y.Artist).ToList()
+                       }).ToList();
+
+
+            SerializeJson(t8);
+            SerializeXML(t8);
+
+            ;
+            ;
         }
     }
 }
