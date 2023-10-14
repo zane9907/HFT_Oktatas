@@ -8,6 +8,13 @@ Email: antaloczy.botond@nik.uni-obuda.hu
 Itt lesznek megtalálhatóak az órai feladatok leírásai illetve a hozzájuk tartozó megoldások.  
 Minden projekt .NET 6.0 verzióval készült.
 
+# .NET 5 letöltése és telepítése
+
+  1.  Töltsd le a .NET 5 SDK-t erről a linkről: https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-5.0.408-windows-x64-installer
+  2.  Futtasd a fájlt.
+  3.  PC restart után meg kell jelennie a verziók között a .NET 5-nek.
+
+! FONTOS HOGY CONSOLE APPLICATION PROJECTET HOZZUNK LÉTRE, NE .NET FRAMEWORK-OT !
 
 # Visual Studio új projekt lérehozása:
   1.  Create a new project
