@@ -1,0 +1,14 @@
+[
+	{
+		"id": "1",
+		"name": "Hungary",
+		"population": 9.71,
+		"currency": "HUF"
+	},
+	{
+		"id": "2",
+		"name": "Germany",
+		"population": 83.2,
+		"currency": "EUR"
+	}
+]
