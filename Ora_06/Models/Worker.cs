@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Ora_06.Models
@@ -32,6 +33,8 @@ namespace Ora_06.Models
         [ForeignKey(nameof(Company))]
         public string CompanyID { get; set; }
 
+        [NotMapped]
+        [JsonIgnore]
         public virtual Company Company { get; set; }
 
         public Worker()
