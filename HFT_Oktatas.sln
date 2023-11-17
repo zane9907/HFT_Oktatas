@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ora_08", "..\Ora_08\Ora_08\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductLogicTests", "..\Ora_08\ProductLogicTests\ProductLogicTests.csproj", "{2CDD4BBD-447D-4664-8600-91B994A09D70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ora_09", "Ora_09\Ora_09.csproj", "{01E08EBB-52A3-40BD-9B6A-81DB93139A15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ora_09", "Ora_09\Ora_09.csproj", "{01E08EBB-52A3-40BD-9B6A-81DB93139A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ora_09_Hazi", "Ora_09_Hazi\Ora_09_Hazi.csproj", "{040BB5A4-FF03-4FEC-B21E-20FE191AEA10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{01E08EBB-52A3-40BD-9B6A-81DB93139A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01E08EBB-52A3-40BD-9B6A-81DB93139A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01E08EBB-52A3-40BD-9B6A-81DB93139A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040BB5A4-FF03-4FEC-B21E-20FE191AEA10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040BB5A4-FF03-4FEC-B21E-20FE191AEA10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040BB5A4-FF03-4FEC-B21E-20FE191AEA10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040BB5A4-FF03-4FEC-B21E-20FE191AEA10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
